@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "ziyou.metric.report-type",
+      "type": "java.lang.String",
+      "description": "metric Report类型",
+      "defaultValue": "console"
+    }
+  ]
+}

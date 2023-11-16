@@ -3,8 +3,42 @@
     {
       "name": "ziyou.metric.report-type",
       "type": "java.lang.String",
-      "description": "metric Report类型",
       "defaultValue": "console"
+    },
+    {
+      "name": "ziyou.metric.rates-unit",
+      "type": "java.util.concurrent.TimeUnit",
+      "defaultValue": "seconds"
+    },
+    {
+      "name": "ziyou.metric.duration-unit",
+      "type": "java.util.concurrent.TimeUnit",
+      "defaultValue": "seconds"
+    },
+    {
+      "name": "ziyou.metric.start-unit",
+      "type": "java.util.concurrent.TimeUnit",
+      "defaultValue": "seconds"
+    },
+    {
+      "name": "ziyou.metric.start-time",
+      "type": "java.lang.Integer",
+      "defaultValue": "10"
+    },
+    {
+      "name": "ziyou.metric.server-name",
+      "type": "java.lang.String",
+      "defaultValue": "report"
+    },
+    {
+      "name": "ziyou.metric.graphite.ip-address",
+      "type": "java.lang.String",
+      "defaultValue": "127.0.0.1"
+    },
+    {
+      "name": "ziyou.metric.graphite.port",
+      "type": "java.lang.Integer",
+      "defaultValue": 2003
     }
   ]
 }

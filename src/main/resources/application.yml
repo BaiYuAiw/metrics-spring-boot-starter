@@ -1,7 +1,0 @@
-ziyou:
-  metric:
-    report-type: console
-    rates-unit: minutes
-#    duration-unit: seconds
-#    start-unit: seconds
-#    start-time: 10

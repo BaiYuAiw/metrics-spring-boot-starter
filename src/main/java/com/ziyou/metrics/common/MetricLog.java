@@ -24,7 +24,7 @@ public class MetricLog {
     private static final Logger logger = LoggerFactory.getLogger(MetricLog.class);
     private Reporter reporter;
 
-    private String serverName;
+    private String serverName = "libo.test.";
 
     @Resource
     private MetricRegistryFactory factory;
@@ -49,27 +49,28 @@ public class MetricLog {
 
     public void log(String key, long value) {
         Timer timer = timerMap.get(key);
-        if(timer == null){
-            synchronized (this){
+        if (timer == null) {
+            synchronized (this) {
                 timer = timerMap.get(key);
-                if(timer == null){
-                    timerMap.put(key,MetricRegistryFactory.registry.timer(MetricRegistry.name(serverName,key)));
+                if (timer == null) {
+                    timerMap.put(key, MetricRegistryFactory.registry.timer(MetricRegistry.name(serverName, key)));
                 }
                 timer = timerMap.get(key);
             }
         }
         timer.update(value, TimeUnit.MILLISECONDS);
     }
-    public void log(String key,String value){
-        String metricName = key+"."+value;
+
+    public void log(String key, String value) {
+        String metricName = key + "." + value;
         Meter meter = meterMap.get(metricName);
-        if(meter == null){
-            synchronized (this){
+        if (meter == null) {
+            synchronized (this) {
                 meter = meterMap.get(metricName);
-                if(meter == null){
-                    meterMap.put(metricName,MetricRegistryFactory.registry.meter(MetricRegistry.name(serverName,metricName)));
+                if (meter == null) {
+                    meterMap.put(metricName, MetricRegistryFactory.registry.meter(MetricRegistry.name(serverName, metricName)));
                 }
-                meter=meterMap.get(metricName);
+                meter = meterMap.get(metricName);
             }
         }
         meter.mark();

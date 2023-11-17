@@ -1,14 +1,12 @@
-package com.ziyou.metrics.common;
+package com.ziyou.metric.common;
 
 import com.codahale.metrics.*;
-import com.ziyou.metrics.config.MetricProperties;
-import com.ziyou.metrics.factory.MetricRegistryFactory;
+import com.ziyou.metric.factory.MetricRegistryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;

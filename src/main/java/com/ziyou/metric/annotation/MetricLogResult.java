@@ -1,4 +1,4 @@
-package com.ziyou.metrics.annotation;
+package com.ziyou.metric.annotation;
 
 import java.lang.annotation.*;
 

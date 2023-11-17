@@ -1,4 +1,4 @@
-package com.ziyou.metrics.factory;
+package com.ziyou.metric.factory;
 
 import com.codahale.metrics.ConsoleReporter;
 import com.codahale.metrics.MetricFilter;
@@ -6,9 +6,9 @@ import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.Reporter;
 import com.codahale.metrics.graphite.Graphite;
 import com.codahale.metrics.graphite.GraphiteReporter;
-import com.ziyou.metrics.common.MetricReportType;
-import com.ziyou.metrics.config.GraphiteConfig;
-import com.ziyou.metrics.config.MetricProperties;
+import com.ziyou.metric.common.MetricReportType;
+import com.ziyou.metric.config.GraphiteConfig;
+import com.ziyou.metric.config.MetricProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

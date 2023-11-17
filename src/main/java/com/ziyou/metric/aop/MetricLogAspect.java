@@ -1,8 +1,8 @@
-package com.ziyou.metrics.aop;
+package com.ziyou.metric.aop;
 
-import com.ziyou.metrics.annotation.MetricLogLatency;
-import com.ziyou.metrics.annotation.MetricLogResult;
-import com.ziyou.metrics.common.MetricLog;
+import com.ziyou.metric.annotation.MetricLogLatency;
+import com.ziyou.metric.annotation.MetricLogResult;
+import com.ziyou.metric.common.MetricLog;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -27,7 +27,7 @@ public class MetricLogAspect {
     @Autowired
     private MetricLog metricLog;
 
-    @Around("@annotation(com.ziyou.metrics.annotation.MetricLogLatency)")
+    @Around("@annotation(com.ziyou.metric.annotation.MetricLogLatency)")
     public Object metricLogLatency(ProceedingJoinPoint point) throws Throwable {
         MethodSignature signature = (MethodSignature) point.getSignature();
         MetricLogLatency metricLogLatency = signature.getMethod().getAnnotation(MetricLogLatency.class);
@@ -48,7 +48,7 @@ public class MetricLogAspect {
         return result;
     }
 
-    @AfterReturning(pointcut = "@annotation(com.ziyou.metrics.annotation.MetricLogResult)", returning = "returnValue")
+    @AfterReturning(pointcut = "@annotation(com.ziyou.metric.annotation.MetricLogResult)", returning = "returnValue")
     public void metricLogResult(JoinPoint point, Object returnValue) {
         MethodSignature methodSignature = (MethodSignature) point.getSignature();
         MetricLogResult metricLogResult = methodSignature.getMethod().getAnnotation(MetricLogResult.class);
@@ -63,7 +63,7 @@ public class MetricLogAspect {
         metricLog.log(key, val);
     }
 
-    @AfterThrowing(pointcut = "@annotation(com.ziyou.metrics.annotation.MetricLogResult)")
+    @AfterThrowing(pointcut = "@annotation(com.ziyou.metric.annotation.MetricLogResult)")
     public void metricLogResultException(JoinPoint joinPoint) {
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
         MetricLogResult metricLogResult = methodSignature.getMethod().getAnnotation(MetricLogResult.class);

@@ -1,7 +1,7 @@
-package com.ziyou.metric.common;
+package com.ziyou.metrics.common;
 
 import com.codahale.metrics.*;
-import com.ziyou.metric.factory.MetricRegistryFactory;
+import com.ziyou.metrics.factory.MetricRegistryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

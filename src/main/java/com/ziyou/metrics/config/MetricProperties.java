@@ -1,4 +1,4 @@
-package com.ziyou.metric.config;
+package com.ziyou.metrics.config;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;

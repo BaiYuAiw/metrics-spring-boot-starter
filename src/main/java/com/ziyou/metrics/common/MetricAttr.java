@@ -1,4 +1,4 @@
-package com.ziyou.metric.common;
+package com.ziyou.metrics.common;
 
 /**
  * 统计类型的枚举类

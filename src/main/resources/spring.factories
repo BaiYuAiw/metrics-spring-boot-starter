@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.ziyou.metric.config.MetricProperties
+  com.ziyou.metrics.config.MetricProperties

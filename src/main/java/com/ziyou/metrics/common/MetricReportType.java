@@ -1,4 +1,4 @@
-package com.ziyou.metric.common;
+package com.ziyou.metrics.common;
 
 /**
  * @author libo

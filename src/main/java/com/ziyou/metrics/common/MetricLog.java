@@ -1,6 +1,7 @@
 package com.ziyou.metrics.common;
 
 import com.codahale.metrics.*;
+import com.ziyou.metrics.config.MetricProperties;
 import com.ziyou.metrics.factory.MetricRegistryFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +23,8 @@ import java.util.concurrent.TimeUnit;
 @Component
 public class MetricLog {
     private static final Logger logger = LoggerFactory.getLogger(MetricLog.class);
-    private Reporter reporter;
 
-    private String serverName = "libo.test.";
 
-    @Resource
-    private MetricRegistryFactory factory;
     private Set<MetricAttr> attrSet;
     private Map<String, Meter> meterMap;
     private Map<String, Timer> timerMap;
@@ -41,7 +38,6 @@ public class MetricLog {
             attrSet.add(MetricAttr.MIN);
             attrSet.add(MetricAttr.MEAN);
         }
-        reporter = factory.getReporter();
         meterMap = new ConcurrentHashMap<>();
         timerMap = new ConcurrentHashMap<>();
         gaugeMap = new ConcurrentHashMap<>();
@@ -53,7 +49,7 @@ public class MetricLog {
             synchronized (this) {
                 timer = timerMap.get(key);
                 if (timer == null) {
-                    timerMap.put(key, MetricRegistryFactory.registry.timer(MetricRegistry.name(serverName, key)));
+                    timerMap.put(key, MetricRegistryFactory.registry.timer(MetricRegistry.name(key)));
                 }
                 timer = timerMap.get(key);
             }
@@ -68,7 +64,7 @@ public class MetricLog {
             synchronized (this) {
                 meter = meterMap.get(metricName);
                 if (meter == null) {
-                    meterMap.put(metricName, MetricRegistryFactory.registry.meter(MetricRegistry.name(serverName, metricName)));
+                    meterMap.put(metricName, MetricRegistryFactory.registry.meter(MetricRegistry.name(metricName)));
                 }
                 meter = meterMap.get(metricName);
             }

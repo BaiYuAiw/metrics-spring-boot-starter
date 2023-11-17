@@ -19,8 +19,8 @@ public class MetricProperties {
     @Autowired
     private GraphiteConfig graphiteConfig;
 
-    private String reportType = "console";
-    private TimeUnit ratesUnit = TimeUnit.SECONDS;
+    private String reportType="console";
+    private TimeUnit ratesUnit=TimeUnit.SECONDS;
     private TimeUnit durationUnit = TimeUnit.SECONDS;
     private TimeUnit startUnit = TimeUnit.SECONDS;
     private Integer startTime = 10;

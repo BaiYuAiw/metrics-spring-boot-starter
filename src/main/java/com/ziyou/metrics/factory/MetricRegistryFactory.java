@@ -9,6 +9,7 @@ import com.codahale.metrics.graphite.GraphiteReporter;
 import com.ziyou.metrics.common.MetricReportType;
 import com.ziyou.metrics.config.GraphiteConfig;
 import com.ziyou.metrics.config.MetricProperties;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.net.InetSocketAddress;
@@ -25,25 +26,26 @@ public class MetricRegistryFactory {
     private TimeUnit durationUnit;
     private TimeUnit startUnit;
     private Integer startTime;
-    private String serverName;
 
     private Reporter reporter;
 
     private GraphiteConfig graphiteConfig;
+    private MetricProperties properties;
 
     public final static MetricRegistry registry = new MetricRegistry();
 
     public MetricRegistryFactory(MetricProperties properties) {
+        this.properties = properties;
         this.reportType = properties.getReportType();
         this.ratesUnit = properties.getRatesUnit();
         this.durationUnit = properties.getDurationUnit();
         this.startUnit = properties.getStartUnit();
         this.startTime = properties.getStartTime();
-
         this.graphiteConfig = properties.getGraphiteConfig();
 
     }
 
+    @Bean
     public Reporter getReporter() {
         if (reporter == null) {
             synchronized (MetricRegistryFactory.class) {
@@ -59,7 +61,7 @@ public class MetricRegistryFactory {
                     } else if (MetricReportType.GRAPHITE.getReportType().equals(reportType)) {
                         GraphiteReporter graphiteReporter = GraphiteReporter
                                 .forRegistry(registry)
-                                .prefixedWith(serverName+"."+reportType)
+                                .prefixedWith(properties.getServerName()+"."+properties.getReportType())
                                 .convertRatesTo(ratesUnit)
                                 .convertDurationsTo(durationUnit)
                                 .filter(MetricFilter.ALL)

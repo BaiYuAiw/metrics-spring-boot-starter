@@ -21,8 +21,9 @@
 - **@MetricLogLatency**:统计耗时
 - **@MetricLogResult**:：统计成功与失败
 
-![img.png](img.png)
-![img_1.png](img_1.png)
+**nano**: 使用微妙还是纳秒统计 <br>
+**nullAsFail**: 返回数据为空时，算成功还是失败
+
 
 ### 风险与BUG
 可能存在bug，使用期间有bug可提issue
